@@ -1,0 +1,24 @@
+#contents {
+	width: 100%;
+	font-size: 10pt;
+}
+
+td {
+	background-color: #fff;
+	font-size:10pt;
+	border:#000 1px solid;
+}
+
+table {
+	width:100%;
+	border-collapse: collapse;
+}
+
+@media print
+{
+  table { page-break-after:auto }
+  tr    { page-break-inside:avoid; page-break-after:auto }
+  td    { page-break-inside:avoid; page-break-after:auto }
+  thead { display:table-header-group }
+  tfoot { display:table-footer-group }
+}

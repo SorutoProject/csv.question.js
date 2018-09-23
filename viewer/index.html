@@ -1,0 +1,65 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<script>
+		window.onload = function() {
+			//get URL Parameter
+			var arg = new Object;
+			var pair = location.search.substring(1).split('&');
+			for (var i = 0; pair[i]; i++) {
+				var kv = pair[i].split('=');
+				arg[kv[0]] = kv[1];
+			}
+			document.getElementById("viewer").src = "./viewer/viewer.html?file=" + arg.file;
+			document.getElementById("viewer").onload = function() {
+				document.getElementById("viewer").contentWindow.parentChangeTitle = true;
+			}
+			document.getElementById("printButton").addEventListener("click", function() {
+				document.getElementById("viewer").contentWindow.print();
+			});
+		}
+
+	</script>
+	<style>
+		#footerBar {
+			position: fixed;
+			background-color: #5c5c5c;
+			width: 100%;
+			top: 0px;
+			left: 0px;
+			height: 25px;
+			text-align: right;
+			z-index: 1;
+		}
+
+		#footerBar button {
+			background-color: #3c3c3c;
+			color: #fff;
+			border: #4c4c4c 2px solid;
+			height: 25px;
+		}
+
+		#footerBar button img {
+			width:21px;
+			height:21px;
+		}
+
+		iframe {
+			position: absolute;
+			top: 25px;
+			left: 0;
+			border: none;
+			width: 100%;
+			height: calc(100% - 25px);
+		}
+
+	</style>
+</head>
+
+<body>
+	<iframe id="viewer"></iframe>
+	<div id="footerBar"><button id="printButton"><img src="../img/icoon-mono.svg"></button></div>
+</body>
+
+</html>
